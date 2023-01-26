@@ -1,0 +1,30 @@
+h2{
+    margin-bottom: 15px;
+}
+
+#form-producto label{
+    margin-top: 15px;
+
+}
+
+#form-producto input[type=text]{
+    width: 60%;
+}
+
+#form-producto textarea{
+    width: 60%;
+}
+
+#boton-submit{
+    margin-top: 25px;
+}
+
+#res_post{
+    font-weight: bold;
+    color: blue;
+}
+
+#error{
+    color: red;
+}
+

@@ -1,0 +1,28 @@
+<h2>{{titulo}}</h2>
+<hr>
+<br>
+<div class="container">
+    <div class="row">
+        <div class="card" style="display: grid;" *ngFor="let producto of productos; let i = index">
+            <br>
+            
+            <h3>{{producto?.title}}</h3>
+            <br>
+            <img src= {{producto?.thumbnail}} class="img-fluid" alt="Imagen">
+            <br>
+            <p>Descripcion: {{producto?.description}}</p>
+            <p>Precio: ${{producto?.price}}</p>
+            <p>Descuento: {{producto?.discountPercentage}}%</p>
+            <p>Rating: {{producto?.rating}}</p>
+            <p>Stock: {{producto?.stock}}</p>
+            <p>Marca: {{producto?.brand}}</p>
+            <p>Categoría: {{producto?.category}}</p>
+            <br>
+            <p id="buttons"  style="align-self: flex-end; justify-content: space-between;">
+                <a [routerLink]="['/producto',producto.id]" class="btn btn-md btn-outline-info">Ver</a> 
+                <a href="#" class="btn btn-md btn-outline-info">Editar</a> 
+                <a href="#" class="btn btn-md btn-outline-danger">Eliminar</a> 
+            </p>
+        </div>
+    </div>
+</div>

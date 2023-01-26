@@ -1,0 +1,16 @@
+.card img{
+    float: left;
+    width:  150px;
+    height: 150px;
+    object-fit: cover;
+}
+
+.card{
+    width: 20rem; 
+    border-color: papayawhip; 
+    background-color: rgb(221, 221, 221);
+}
+
+#buttons a{
+    margin-right: 5px;
+}

@@ -1,32 +1,25 @@
 <div id="content" class="container">
 
-  <div id="headernav" class="row justify-content-around">
-    <header id="header" class="col-4">
+  <div id="headernav" class="row">
+    <header id="header" class="col-sm">
       <h1>
         {{title}}
       </h1>
     </header>
-    <nav id="nav" class="col-4">
+    <nav id="nav" class="col-sm">
       <ul>
-        <li><a href="/">Home</a></li>
-        <li><a href="/">Productos</a></li>
-        <li><a href="/">Crear producto</a></li>
+        <li><a [routerLink]="['/home']" [routerLinkActive]="['activado']">Home</a></li>
+        <li><a [routerLink]="['/productos']" [routerLinkActive]="['activado']">Productos</a></li>
+        <li><a [routerLink]="['/agregar-producto']" [routerLinkActive]="['activado']">Agregar producto</a></li>
+        <li><a [routerLink]="['/asdasd']" [routerLinkActive]="['activado']">Probar 404</a></li>
       </ul>
     </nav>
   </div>
 
-  <home></home>
+  <router-outlet></router-outlet>
 
-  <div class="row justify-content-start">
-    <div class="col-4">
-      <section id="main">
-        
-      </section>
-    </div>
-  </div>
-
-  <div class="row justify-content-start">
-    <footer id="footer" class="col-4">
+  <div class="row">
+    <footer id="footer" class="col-sm">
       <p>Practicando Angular - Footer</p>
     </footer>
   </div>
