@@ -43,10 +43,8 @@ export class ProductoEditComponent {
   getProducto(){
     this._route.params.forEach((params: Params) => {
       this.id = params['id'];
-      this._productoService.getProducto(this.id)
-      .subscribe(
+      this._productoService.getProducto(this.id).subscribe(
       (response: any) => { 
-        console.log(response);
         if(response.status == 200){
           this.producto = response.body;
         }
@@ -56,14 +54,13 @@ export class ProductoEditComponent {
         },
       (error: any) => { 
         console.log(error); 
-        } //Capturamos y mostramos el error, de existir
+        }
       );
     });
   }
 
   onSubmit(){
-    this._productoService.editProducto(this.id, this.producto)
-    .subscribe(
+    this._productoService.editProducto(this.id, this.producto).subscribe(
       (result: any) => { 
         this.display = true;
         if(result.status == 200){
@@ -75,9 +72,8 @@ export class ProductoEditComponent {
         },
       (error: any) => { 
         console.log(error); 
-        } //Capturamos y mostramos el error, de existir
+        }
       );  
   }
-
 
 }

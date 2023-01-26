@@ -38,13 +38,11 @@ export class ProductosAddComponent {
   }
 
   onSubmit(){
-    this._productoService.addProducto(this.producto)
-    .subscribe(
-      (result: any) => { 
-        console.log(result);
+    this._productoService.addProducto(this.producto).subscribe(
+      (response: any) => { 
         this.display = true;
-        if(result.status == 200){
-          this.res = "Producto agregado satisfactoriamente con id: " + result.body["id"]
+        if(response.status == 200){
+          this.res = "Producto agregado satisfactoriamente con id: " + response.body["id"]
         }
         else{
           this.res = "Algo salió mal. El producto no pudo ser añadido"
@@ -52,7 +50,7 @@ export class ProductosAddComponent {
         },
       (error: any) => { 
         console.log(error); 
-        } //Capturamos y mostramos el error, de existir
+        } 
       );  
   }
 }

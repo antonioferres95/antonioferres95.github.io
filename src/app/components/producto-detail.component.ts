@@ -35,10 +35,8 @@ export class ProductoDetailComponent {
   getProducto(){
     this._route.params.forEach((params: Params) => {
       let id = params['id'];
-      this._productoService.getProducto(id)
-      .subscribe(
+      this._productoService.getProducto(id).subscribe(
       (response: any) => { 
-        console.log(response);
         if(response.status == 200){
           this.producto = response.body;
         }
@@ -48,9 +46,9 @@ export class ProductoDetailComponent {
         },
       (error: any) => { 
         console.log(error); 
-        } //Capturamos y mostramos el error, de existir
+        }
       );
     });
   }
-  
+
 }

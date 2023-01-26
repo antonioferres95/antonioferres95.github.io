@@ -44,22 +44,18 @@ export class ProductosListComponent {
   }
 
   listProductos(){
-    this._productoService.getProductos()
-    .subscribe(
+    this._productoService.getProductos().subscribe(
       (response: any) => { 
-        console.log(response); 
         this.productos = [...response.products]; 
-        console.log(this.productos);
         }, //Guardamos el responseado en una variable del componente
       (error: any) => { 
         console.log(error); 
-        } //Capturamos y mostramos el error, de existir
+        }
       );      
   }
 
   onDeleteProducto(id:number){
-    this._productoService.deleteProducto(id)
-    .subscribe(
+    this._productoService.deleteProducto(id).subscribe(
       (response: any) => { 
         if(response.status == 200){
           let index = this.productos.map(e => e.id).indexOf(id);
@@ -72,7 +68,7 @@ export class ProductosListComponent {
         },
       (error: any) => { 
         console.log(error); 
-        } //
+        }
   )};
 
 }
