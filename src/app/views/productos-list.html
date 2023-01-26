@@ -3,26 +3,23 @@
 <br>
 <div class="container">
     <div class="row">
-        <div class="card" style="display: grid;" *ngFor="let producto of productos; let i = index">
-            <br>
-            
-            <h3>{{producto?.title}}</h3>
-            <br>
-            <img src= {{producto?.thumbnail}} class="img-fluid" alt="Imagen">
-            <br>
-            <p>Descripcion: {{producto?.description}}</p>
-            <p>Precio: ${{producto?.price}}</p>
-            <p>Descuento: {{producto?.discountPercentage}}%</p>
-            <p>Rating: {{producto?.rating}}</p>
-            <p>Stock: {{producto?.stock}}</p>
-            <p>Marca: {{producto?.brand}}</p>
-            <p>Categoría: {{producto?.category}}</p>
-            <br>
-            <p id="buttons"  style="align-self: flex-end; justify-content: space-between;">
-                <a [routerLink]="['/producto',producto.id]" class="btn btn-md btn-outline-info">Ver</a> 
-                <a href="#" class="btn btn-md btn-outline-info">Editar</a> 
-                <a href="#" class="btn btn-md btn-outline-danger">Eliminar</a> 
-            </p>
+        <div class="card" style="display: grid;" *ngFor="let producto of productos; let i = index"> <br>
+            <h3>{{producto?.title}}</h3> <br>
+            <img src= {{producto?.thumbnail}} class="img-fluid" alt="Imagen"> <br>
+            <p> <strong>Precio:</strong>  ${{producto?.price}}</p>
+            <p> <strong>Descuento:</strong>  {{producto?.discountPercentage}}%</p>
+            <p> <strong>Marca:</strong>  {{producto?.brand}}</p>
+            <p> <strong>Categoría:</strong>  {{producto?.category}}</p> <br>
+            <div *ngIf="confirm != producto.id" id="buttons">
+                <a [routerLink]="['/producto', producto.id]" class="btn btn-md btn-outline-info">Ver</a> 
+                <a [routerLink]="['/editar-producto', producto.id]" class="btn btn-md btn-outline-info">Editar</a> 
+                <a (click)="confirmYes(producto.id)" class="btn btn-md btn-outline-danger">Eliminar</a> 
+            </div>
+            <div id="buttons" *ngIf="confirm == producto.id">
+                <div class="alert alert-danger" role="alert" style="font-weight: bold;">¿Realmente quieres eliminarlo?</div>
+                <a (click)="onDeleteProducto(producto.id)" class="btn btn-danger">Eliminar</a>
+                <a (click)="confirmCancel()" class="btn btn-md btn-outline-secondary">Cancelar</a>
+            </div>
         </div>
     </div>
 </div>

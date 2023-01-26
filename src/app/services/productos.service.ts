@@ -24,23 +24,20 @@ export class ProductoService{
     }
 
     getProducto(id:number){
-      console.log(this.url+'products/'+id)
       return this._http.get(this.url+'products/'+id, {observe: 'response'});
     }
 
     addProducto(producto:Producto){
       var params = JSON.stringify(producto);
-      console.log(producto)
-      console.log(params)
       return this._http.post(this.url+'products/add', params, {observe: 'response'});
     }
 
-    makeFileRequest(url:string, params:Array<string>, file:File){
-      return new Promise((resolve, reject) => {
-        var formData:any = new FormData();
-        var xhr = new XMLHttpRequest();
+    editProducto(id:number, producto:Producto){
+      var params = JSON.stringify(producto);
+      return this._http.patch(this.url+'products/'+id, params, {observe: 'response'});
+    }
 
-        //for(var)
-      });
+    deleteProducto(id:number){
+      return this._http.delete(this.url+'products/'+id, {observe: 'response'});
     }
 }

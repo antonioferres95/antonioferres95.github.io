@@ -8,6 +8,8 @@ import { ErrorComponent } from './components/error.component';
 import { ProductosListComponent } from './components/productos-list.component';
 import { ProductosAddComponent } from './components/productos-add.component';
 import { ProductoDetailComponent } from './components/producto-detail.component';
+import { ProductoEditComponent } from './components/producto-edit.component';
+
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
@@ -15,6 +17,7 @@ const routes: Routes = [
   {path: 'productos', component: ProductosListComponent},
   {path: 'agregar-producto', component: ProductosAddComponent},
   {path: 'producto/:id', component: ProductoDetailComponent},
+  {path: 'editar-producto/:id', component: ProductoEditComponent},
   {path: '**', component: ErrorComponent},
 ];
 

@@ -4,7 +4,7 @@ h2{
 
 #form-producto label{
     margin-top: 15px;
-
+    font-weight: 500;
 }
 
 #form-producto input[type=text]{
@@ -12,6 +12,10 @@ h2{
 }
 
 #form-producto textarea{
+    width: 60%;
+}
+
+#form-producto .form-control{
     width: 60%;
 }
 

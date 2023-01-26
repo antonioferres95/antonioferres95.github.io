@@ -1,2 +1,28 @@
 <h2>{{titulo}}</h2>
-{{producto}}
+<hr>
+<div style="margin-bottom: 20px; margin-top: 5px;">
+    <a href="/productos" class="btn btn-outline-secondary">Volver atrás</a>
+</div>
+<div class="card text-center">
+    <div class="card-header">
+      <strong>{{producto.brand}}</strong>
+    </div>
+    <div class="card-body">
+      <h4 class="card-title">{{producto.title}}</h4>
+      <img src= {{producto.thumbnail}} class="img-fluid" alt="Imagen"> <br><br>
+      <p class="card-text">{{producto.description}}</p>
+      
+    </div>
+    <div class="card-footer" style="font-weight: bold; text-decoration: underline black;">
+      ¡Adquiere este producto a tan solo ${{producto.price}} y con un %{{producto.discountPercentage}} de descuento!
+    </div>
+    <div class="card-footer text-muted">
+        Este producto cuenta con una puntuación de <strong>{{producto.rating}}</strong> según nuestros clientes
+    </div>
+    <div *ngIf="producto.stock > 0" class="card-footer text-muted">
+        ¡Stock disponible!
+    </div>
+    <div *ngIf="producto.stock == 0" class="card-footer text-muted">
+        Lo sentimos, este producto ya no cuenta con stock.
+    </div>
+</div>

@@ -8,4 +8,8 @@ import { GLOBAL } from './services/global';
 })
 export class AppComponent {
   title = 'Productos webapp';
+
+  goToLink(url:string){
+    window.open(url, "_blank");
+  }
 }

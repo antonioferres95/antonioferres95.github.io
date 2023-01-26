@@ -9,7 +9,7 @@ export class HomeComponent {
   public titulo:string;
 
   constructor(){
-    this.titulo = "Webapp de productos"
+    this.titulo = "Bienvenido/a a esta webapp de productos"
   }
 
   ngOnInit(){

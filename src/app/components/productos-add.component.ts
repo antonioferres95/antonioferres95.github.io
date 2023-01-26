@@ -16,9 +16,10 @@ import { Producto } from '../models/producto';
 })
 export class ProductosAddComponent {
   public titulo:string;
+  public boton_text:string;
   public producto:Producto;
-  public res_post:string;
-  public display_post:boolean;
+  public res:string;
+  public display:boolean;
 
   constructor(
     private _route: ActivatedRoute,
@@ -26,8 +27,9 @@ export class ProductosAddComponent {
     private _productoService:ProductoService
   ){
     this.titulo = "Agregar productos";
-    this.res_post = '';
-    this.display_post = false;
+    this.res = '';
+    this.display = false;
+    this.boton_text = "Agregar producto";
     this.producto = new Producto(0, "", "", 0, 0, 0, 0, "", "", "",[])
   }
 
@@ -35,17 +37,17 @@ export class ProductosAddComponent {
     console.log("Productos Add cargado");
   }
 
-  addProducto(){
+  onSubmit(){
     this._productoService.addProducto(this.producto)
     .subscribe(
       (result: any) => { 
         console.log(result);
-        this.display_post = true;
+        this.display = true;
         if(result.status == 200){
-          this.res_post = "Producto agregado satisfactoriamente con id: " + result.body["id"]
+          this.res = "Producto agregado satisfactoriamente con id: " + result.body["id"]
         }
         else{
-          this.res_post = "Algo salió mal. El producto no pudo ser añadido"
+          this.res = "Algo salió mal. El producto no pudo ser añadido"
         }
         },
       (error: any) => { 

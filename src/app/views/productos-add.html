@@ -1,15 +1,16 @@
 <h2>{{titulo}}</h2>
+<hr>
 
-<form id="form-producto" #formProductos="ngForm" (ngSubmit)="addProducto(); formProductos.reset();">
+<form id="form-producto" #formProductos="ngForm" (ngSubmit)="onSubmit(); formProductos.reset();">
 
     <label>Título: </label>
-    <input type="text" class="form-control" name="title" #title="ngModel" [(ngModel)]="producto.title" required pattern="[a-zA-Z0-9]+">
+    <input type="text" class="form-control" name="title" #title="ngModel" [(ngModel)]="producto.title" required>
     <div id="error" *ngIf="title.touched && !title.valid">
         Título incorrecto
     </div>  <br>
 
     <label>Descripción: </label>
-    <textarea type="text" class="form-control" rows="5" name="description" #description="ngModel" [(ngModel)]="producto.description" required pattern="[a-zA-Z0-9]+"></textarea>
+    <textarea type="text" class="form-control" rows="5" name="description" #description="ngModel" [(ngModel)]="producto.description" required></textarea>
     <div id="error" *ngIf="description.touched && !description.valid">
         Descripción incorrecto.
     </div>  <br>
@@ -39,19 +40,19 @@
     </div>  <br>
 
     <label>Marca: </label>
-    <input type="text" class="form-control" name="brand" #brand="ngModel" [(ngModel)]="producto.brand" required pattern="[a-zA-Z0-9]+">
+    <input type="text" class="form-control" name="brand" #brand="ngModel" [(ngModel)]="producto.brand" required>
     <div id="error" *ngIf="brand.touched && !brand.valid">
         Marca incorrecto.
     </div>  <br>
 
-    <label>Categoria: </label> <br>
-    <select name="category" #category="ngModel" [(ngModel)]="producto.category" required>
+    <label for="exampleFormControlSelect1">Categoria: </label> <br>
+    <select class="form-control" id="exampleFormControlSelect1" name="category" #category="ngModel" [(ngModel)]="producto.category" required>
         <option value=Celulares>Celulares</option>
         <option value=Notebooks>Notebooks</option>
         <option value=Mouses>Mouses</option>
         <option value=Teclados>Teclados</option>
         <option value=Audio>Audio</option>
-    </select> <br><br>
+    </select> <br>
 
     <label>Thumbnail (URL): </label>
     <input type="text" class="form-control" name="thumbnail" #thumbnail="ngModel" [(ngModel)]="producto.thumbnail" required pattern="https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,4}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)(.jpg|.png|.gif)">
@@ -61,6 +62,8 @@
     </div>     
 
     <br> 
-    <input id="boton-submit"  type="submit" value="Agregar producto" class="btn btn-success" [disabled]="!formProductos.form.valid"> <br> <br>
-    <div class="alert alert-primary" role="alert" id="res_post" *ngIf="display_post == true">{{res_post}}</div>
+    <input id="boton-submit"  type="submit" value={{boton_text}} class="btn btn-success" [disabled]="!formProductos.form.valid"> <br> <br>
+    <div class="alert alert-primary" role="alert" id="res_post" *ngIf="display == true">
+        {{res}}
+        <a href="/productos" style="margin-left: 15px;" class="btn btn-outline-primary">Volver a productos</a>    </div>
 </form>

@@ -16,6 +16,7 @@ import { Producto } from '../models/producto';
 })
 export class ProductosListComponent {
   public titulo:string;
+  public confirm:number;
   public producto:Producto | undefined;
   public productos:Array<Producto>;
 
@@ -26,24 +27,52 @@ export class ProductosListComponent {
   ){
     this.titulo = "Listado de productos";
     this.productos = [];
+    this.confirm=-1;
   }
 
   ngOnInit(){
     console.log("Productos List cargado");
-    this.showPosts();
+    this.listProductos();
   }
 
-  showPosts(){
+  confirmYes(id:number){
+    this.confirm=id;
+  }
+
+  confirmCancel(){
+    this.confirm=-1;
+  }
+
+  listProductos(){
     this._productoService.getProductos()
     .subscribe(
-      (result: any) => { 
-        console.log(result); 
-        this.productos = [...result.products]; 
+      (response: any) => { 
+        console.log(response); 
+        this.productos = [...response.products]; 
         console.log(this.productos);
-        }, //Guardamos el resultado en una variable del componente
+        }, //Guardamos el responseado en una variable del componente
       (error: any) => { 
         console.log(error); 
         } //Capturamos y mostramos el error, de existir
       );      
   }
+
+  onDeleteProducto(id:number){
+    this._productoService.deleteProducto(id)
+    .subscribe(
+      (response: any) => { 
+        if(response.status == 200){
+          let index = this.productos.map(e => e.id).indexOf(id);
+          this.productos.splice(index,1);
+        }
+        else{
+          this._router.navigate(['/home']);
+          console.log("Algo salio mal al eliminar el producto");
+        }
+        },
+      (error: any) => { 
+        console.log(error); 
+        } //
+  )};
+
 }

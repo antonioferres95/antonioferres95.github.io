@@ -1,28 +1,38 @@
 <div id="content" class="container">
 
-  <div id="headernav" class="row">
-    <header id="header" class="col-sm">
-      <h1>
-        {{title}}
-      </h1>
-    </header>
-    <nav id="nav" class="col-sm">
-      <ul>
-        <li><a [routerLink]="['/home']" [routerLinkActive]="['activado']">Home</a></li>
-        <li><a [routerLink]="['/productos']" [routerLinkActive]="['activado']">Productos</a></li>
-        <li><a [routerLink]="['/agregar-producto']" [routerLinkActive]="['activado']">Agregar producto</a></li>
-        <li><a [routerLink]="['/asdasd']" [routerLinkActive]="['activado']">Probar 404</a></li>
-      </ul>
-    </nav>
-  </div>
+  <header id="headernav" class="row">
+
+    <div class="col-sm">
+      <img src="https://angular.io/assets/images/logos/angular/shield-large.svg" width="80" height="80" class="d-inline-block align-top" alt="">
+    </div>
+
+    <div class="col-sm" style="align-self: center;">
+      <h1>{{title}}</h1>
+    </div>
+
+    <div class="col-sm">
+      <nav id="nav" class="col-sm">
+        <ul>
+          <li><a [routerLink]="['/home']" [routerLinkActive]="['activado']">Home</a></li>
+          <li><a [routerLink]="['/productos']" [routerLinkActive]="['activado']">Productos</a></li>
+          <li><a [routerLink]="['/agregar-producto']" [routerLinkActive]="['activado']">Agregar producto</a></li>
+          <li><a [routerLink]="['/asdasd']" [routerLinkActive]="['activado']">Probar 404</a></li>
+        </ul>
+      </nav>
+    </div>
+
+  </header>
 
   <router-outlet></router-outlet>
 
-  <div class="row">
-    <footer id="footer" class="col-sm">
-      <p>Practicando Angular - Footer</p>
-    </footer>
-  </div>
+  <footer id="footer" class="row justify-content-around">
+    <div class="col-4">
+      Antonio Ferres
+    </div>
+    <div class="col-4">
+      <a (click)="goToLink('https://www.linkedin.com/in/antonio-ferres/')" href=""> <img src="https://play-lh.googleusercontent.com/kMofEFLjobZy_bCuaiDogzBcUT-dz3BBbOrIEjJ-hqOabjK8ieuevGe6wlTD15QzOqw" alt="Linkeding image" style="max-width: 20px; max-height: 20px; margin-left: 55%;"></a>
+    </div>
+  </footer>
 
 </div>
 
